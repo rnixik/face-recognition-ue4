@@ -64,6 +64,7 @@ echo Copying OpenCV
 if not exist "%opencv_win64_build_dir%\include\opencv2\core.hpp" (
   echo "Check .env file! Path of opencv_win64_build_dir is not correct: %opencv_win64_build_dir%"
 ) else (
+  call %~dp0prepare_opencv_hpp.bat
   xcopy /Y /S /E /Q "%opencv_win64_build_dir%\include\opencv2" "%ue4_project_dir%\ThirdParty\FaceRecognition\Includes\opencv2\"
   copy /Y %~dp0utility.hpp "%ue4_project_dir%\ThirdParty\FaceRecognition\Includes\opencv2\core\utility.hpp"
   xcopy /Y /S /E /Q "%opencv_win64_build_dir%\x64\vc14\bin\opencv_world%opencv_version%.dll" "%ue4_project_dir%\Binaries\Win64\"
