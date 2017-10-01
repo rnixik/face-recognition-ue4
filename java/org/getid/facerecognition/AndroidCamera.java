@@ -67,6 +67,17 @@ public class AndroidCamera implements Camera.PreviewCallback{
 
         actualSize = parameters.getPreviewSize();
         Log.i(TAG, "Actual preview size: " + actualSize.width + "x" + actualSize.height);
+        
+        /* 
+        This is outdated version. See for: 
+        int[] textures = new int[1];  
+            GLES20.glGenTextures(1, textures, 0);  
+            mTextureID = textures[0];  
+            GLES20.glBindTexture(android.opengl.GLES11Ext.GL_TEXTURE_EXTERNAL_OES, mTextureID); 
+
+		    surfaceTexture = new SurfaceTexture(mTextureID);
+			mCamera.setPreviewTexture(surfaceTexture);
+        */
 
         /* Workaround for API > 10. It needs some preview destination */
         if (Build.VERSION.SDK_INT > 10) {
